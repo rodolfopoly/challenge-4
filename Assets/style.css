@@ -1,0 +1,65 @@
+*, *::before, *::after {
+ box-sizing: border-box;
+ font-family: Gotham Rounded;
+}
+
+body{
+  background-color: blanchedalmond;
+}
+
+header{
+  display: block;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+}
+
+h1,p,.control{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-grid{
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+/*.hide, .wrong, .correct{
+  display: none;
+}*/
+
+.wrong, .correct{
+  width: 100%;
+  border-top: 1px solid black;
+}
+
+.floatLeft{
+  float: left;
+}
+.floatRight{
+  float: right;
+}
+
+
+
+
+@media (max-width: 690px) {
+    .btn {
+      font-size: 1rem;
+      margin: 16px 0px 0px 0px;
+      padding: 10px 15px;
+    }
+  
+    #password {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .btn {
+      font-size: 0.8rem;
+    }
+  }

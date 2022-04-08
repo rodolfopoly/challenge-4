@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Code Quiz</title>
+    <link rel="stylesheet" href="./Assets/style.css" />
+    <script src="./Assets/script.js"></script>
+  </head>
+  <body>
+    <button class="floatLeft" id="highScores">Value High Scores</button>
+    <div class="floatRight">Time:0</div>
+    <header>
+      <section class="container">
+        <div id="introduction" class="show">
+          <h1>Dota Quiz</h1>
+          <p id="quiz">Try to answer the following code related questions within the time limit .Keep in mind that incorrect answers will penalize your score time by ten seconds</p>
+        </div>
+        <div class="control">
+          <button id="start-btn" class="start-btn btn">Start</button>
+       </div>
+        <div id="question-container" class="hide">
+          <div id="question">Question</div>
+          <div id="answer-buttons" class="btn-grid">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
+        </div>
+        <div>
+          <p class="wrong">Wrong!!</p>
+          <p class="correct">Correct</p>
+        </div>
+      </section>         
+      </header>
+  </body>
+</html>
