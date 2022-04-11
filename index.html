@@ -6,18 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Code Quiz</title>
     <link rel="stylesheet" href="./Assets/style.css" />
-    <script src="./Assets/script.js"></script>
   </head>
   <body>
-    <button class="floatLeft" id="highScores">Value High Scores</button>
-    <div class="floatRight">Time:0</div>
+    <button class="floatLeft btn" id="highScores">Value High Scores</button>
+    <div class="floatRight" id="time">Time: </div>
     <header>
       <section class="container">
         <div id="introduction" class="show">
           <h1>Dota Quiz</h1>
-          <p id="quiz">Try to answer the following code related questions within the time limit .Keep in mind that incorrect answers will penalize your score time by ten seconds</p>
+          <p>Try to answer the following code related questions within the time limit .Keep in mind that incorrect answers will penalize your score time by ten seconds</p>
         </div>
-        <div class="control">
+        <div id="control" class="control">
           <button id="start-btn" class="start-btn btn">Start</button>
        </div>
         <div id="question-container" class="hide">
@@ -30,10 +29,27 @@
           </div>
         </div>
         <div>
-          <p class="wrong">Wrong!!</p>
-          <p class="correct">Correct</p>
+          <p id="wrong" class="hide answer">Wrong!!</p>
+          <p id="correct" class="hide answer">Correct</p>
         </div>
       </section>         
       </header>
+      <div id="quizOver" class="hide container hide">
+        <h1>All Done!</h1>
+        <div id="yourHighScore"></div>
+        <div class="input-group container">
+          <label for="initial">Enter Initial: </label>
+          <input type="text" name="initial" id="input" />
+          <button class="btn" id="submit">Submit</button>
+        </div>
+      </div>
+      <div id="highScoresTable" class="hide container hide">
+        <h1>Highscores</h1>
+        <ol id="highScoreList">
+        </ol>
+        <button class="btn" id="goBack">Go Back</button>
+        <button class="btn" id="clearHighscores">Clear Highscores</button>
+      </div>
+      <script src="./Assets/script.js"></script>
   </body>
 </html>

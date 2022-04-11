@@ -4,7 +4,7 @@
 }
 
 body{
-  background-color: blanchedalmond;
+  background-color: white;
 }
 
 header{
@@ -16,7 +16,7 @@ header{
   padding-top: 60px;
 }
 
-h1,p,.control{
+h1, p, .control,{
   display: flex;
   justify-content: center;
 }
@@ -25,13 +25,19 @@ h1,p,.control{
   display: flex;
   flex-direction: column;
   align-items: baseline;
+  padding-top: 20px;
 }
 
-/*.hide, .wrong, .correct{
-  display: none;
-}*/
+.btn{
+  background-color: rgb(142, 72, 207);
+  color: white;
+}
 
-.wrong, .correct{
+.hide, .wrong, .correct{
+  display: none;
+}
+
+.answer{
   width: 100%;
   border-top: 1px solid black;
 }
@@ -43,6 +49,10 @@ h1,p,.control{
   float: right;
 }
 
+.inBlock{
+  display: flex;
+  margin: 0;
+}
 
 
 
