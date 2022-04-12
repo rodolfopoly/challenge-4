@@ -177,11 +177,15 @@
 
   function scoreCalculator(){
     score = correctQuestion/(shuffledQuestion.length)*100
+    correctQuestion = 0
     console.log(score)
     questionContainer.classList.add('hide')
     quizOverEl.classList.remove('hide')
     const paragraph = document.createElement('p')
     paragraph.innerText = "Your final score is " + score + "."
+    while (highScoreListEl.firstChild) {
+      yourHighScore.removeChild(yourHighScore.firstChild);
+  }
     yourHighScore.appendChild(paragraph)
 }
 
