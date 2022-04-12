@@ -33,6 +33,18 @@ h1, p, .control,{
   color: white;
 }
 
+.show{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.start-btn{
+  width: 20%;
+  margin-left: 40%;
+}
+
 .hide, .wrong, .correct{
   display: none;
 }
@@ -44,9 +56,11 @@ h1, p, .control,{
 
 .floatLeft{
   float: left;
+  margin-left: 10%;
 }
 .floatRight{
   float: right;
+  margin-right: 10%;
 }
 
 .inBlock{

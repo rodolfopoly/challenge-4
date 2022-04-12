@@ -12,18 +12,22 @@
   const yourHighScore = document.getElementById('yourHighScore')
   const inputEl = document.getElementById('input')
   const submitEl = document.getElementById('submit')
-  const highScoreTableEl = document.getElementById('highScoreTable')
+  const highScoreTableEl = document.getElementById('highScoresTable')
   const highScoreListEl = document.getElementById('highScoreList')
+  const highScoresEL = document.getElementById('highScores')
+  const clearHighScoresEL = document.getElementById('clearHighScores')
+  const goBackEL = document.getElementById('goBack')
   var correctQuestion = 0
   var wrongQuestion = 0
   var score = 0
   var timerEl = document.getElementById('time')
   var endQuestion
-  var initial = inputEl.value
+  var highScore = []
+  var initial = 0
 
   startBtn.addEventListener('click', startQuiz)
 
-  function startQuiz(params) {
+  function startQuiz() {
       countdown(40)
       console.log('started');
       startBtn.classList.add('hide')
@@ -77,18 +81,8 @@
       }
   }
 
-  function scoreCalculator(){
-      score = correctQuestion/(shuffledQuestion.length)*100
-      console.log(score)
-      questionContainer.classList.add('hide')
-      quizOverEl.classList.remove('hide')
-      const paragraph = document.createElement('p')
-      paragraph.innerText = "Your final score is " + score + "."
-      yourHighScore.appendChild(paragraph)
-  }
 
-
-  function clearStatusClass(element){
+  function clearStatusClass(){
     correctElement.classList.add('hide')
     wrongElement.classList.add('hide')
   }
@@ -100,7 +94,7 @@
     var timeInterval = setInterval(function () {
 
         if (endQuestion) {
-            endQuestion.resetState
+            endQuestion = false
             timeLeft = 0
             timerEl.textContent = 'time: ' + timeLeft;
         }
@@ -181,22 +175,59 @@
       }
   }
 
-
-  function setHighScore(){
-      initial = inputEl.value
-      console.log(initial)
-      localStorage.setItem(JSON.stringify(initial), JSON.stringify(score))
-      highScoreList()
-  }
+  function scoreCalculator(){
+    score = correctQuestion/(shuffledQuestion.length)*100
+    console.log(score)
+    questionContainer.classList.add('hide')
+    quizOverEl.classList.remove('hide')
+    const paragraph = document.createElement('p')
+    paragraph.innerText = "Your final score is " + score + "."
+    yourHighScore.appendChild(paragraph)
+}
 
   function highScoreList(){
-    const list = document.createElement('li')
-    highScoreListEl.appendChild(list)
-    highScoreTableEl.classList.remove('hide')
+    initial = inputEl.value
+      console.log(initial)
+      var saveScore = {
+        initial: initial,
+        score: score,
+      }
+    highScore.push(saveScore)
+    localStorage.setItem('highScores', JSON.stringify(highScore));
+    viewHighScore()  
+  }
+  
+  function viewHighScore(){
+    startBtn.classList.add('hide')
+    introduction.classList.add('hide')
     quizOverEl.classList.add('hide')
+    highScoreTableEl.classList.remove('hide')
+    for (var i = 0; i < highScore.length; i++) {
+    const ListEl = document.createElement('li');
+    ListEl.textContent = highScore[i].initial + " - " + highScore[i].score;
+    highScoreListEl.appendChild(ListEl);
+  }
   }
 
-  submitEl.addEventListener('click', setHighScore)
+  function clearHighScore(){
+    highScore = []
+    while (highScoreListEl.firstChild) {
+      highScoreListEl.removeChild(highScoreListEl.firstChild);
+  }
+  localStorage.clear(highScore);
+  }
+
+  function begin(){
+    highScoreTableEl.classList.add('hide')
+    startBtn.classList.remove('hide')
+    introduction.classList.remove('hide')
+  }
+
+  submitEl.addEventListener('click', highScoreList)
+  goBackEL.addEventListener('click',begin)
+  clearHighScoresEL.addEventListener('click',clearHighScore)
+  highScoresEL.addEventListener('click', viewHighScore)
+
 
   const myQuestions = [
     {
